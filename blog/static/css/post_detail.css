@@ -1,0 +1,187 @@
+body {
+  background-color: #191919;
+  font-family: "Lato";
+}
+
+.comments-section {
+  margin: 0 15px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: 5%;
+  width: 600px;
+  margin-bottom: 10%;
+}
+.comments-section h4 {
+  margin: 0;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+  border-bottom: 1px solid #666;
+  padding-bottom: 5px;
+}
+.comments-section .comments {
+  color: white;
+}
+.comments-section .comments h4 {
+  border: 0;
+}
+.comments-section .comment {
+  background: #28282B;
+  padding: 20px;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+.comments-section .comment blockquote {
+  color: #eee;
+  padding: 1em;
+  border-left: 2px solid #76daff;
+  background: rgba(0, 0, 0, 0.05);
+}
+.comments-section .comment code {
+  font-family: Menlo, Monaco, monospace;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2px 5px;
+  margin: 0 2px;
+  border-radius: 2px;
+}
+.comments-section .comment .box {
+  background: #1d1f20;
+  padding: 20px;
+}
+.comments-section .comment .box pre {
+  overflow: auto;
+  margin: 0;
+}
+.comments-section .comment .box pre code {
+  background: transparent;
+}
+.comments-section .comment .box + .box {
+  padding-top: 0px;
+}
+.comments-section .comment a {
+  color: #76daff;
+  text-decoration: none;
+}
+.comments-section .comment .comment-user {
+  border-bottom: 1px solid #555;
+  padding: 10px 45px 20px;
+  display: flex;
+  align-items: center;
+}
+.comments-section .comment .comment-user .avatar img {
+  width: 35px;
+  height: 35px;
+}
+.comments-section .comment .comment-user .username {
+  color: #76daff;
+}
+.comments-section .comment .comment-user .user-details {
+  color: #666;
+  margin-left: 10px;
+}
+.comments-section .comment .comment-user .user-details span:last-child {
+  color: #999;
+  font-size: 80%;
+}
+.comments-section .comment .comment-text {
+  padding: 10px 45px 20px;
+}
+
+/* EDITOR STYLE */
+.CodepenCommentEditor-root {
+  background: transparent;
+  font-family: "Lato", serif;
+  font-size: 14px;
+}
+
+.CodepenCommentEditor-editor {
+  background: #fff;
+  border: 3px solid #ccc;
+  cursor: text;
+  font-size: 13px;
+  margin-top: 10px;
+  font-family: "Lato";
+  transition: all 0.2s ease-in;
+}
+
+.CodepenCommentEditor-focus {
+  border-color: #555;
+}
+
+.CodepenCommentEditor-editor .public-DraftEditorPlaceholder-root,
+.CodepenCommentEditor-editor .public-DraftEditor-content {
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.CodepenCommentEditor-editor .public-DraftEditor-content {
+  min-height: 100px;
+}
+
+.CodepenCommentEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
+  display: none;
+}
+
+.CodepenCommentEditor-editor .CodepenCommentEditor-blockquote {
+  border-left: 2px solid #76daff;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #666;
+  font-style: italic;
+  margin: 16px 0;
+  margin-right: 5px;
+  padding: 10px 20px;
+}
+
+.CodepenCommentEditor-editor .public-DraftStyleDefault-pre {
+  margin-right: 5px;
+  background-color: rgba(0, 0, 0, 0.05);
+  font-family: "Inconsolata", "Menlo", "Consolas", monospace;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.CodepenCommentEditor-controls {
+  font-family: "Lato", sans-serif;
+  font-size: 12px;
+  margin-bottom: 2px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.CodepenCommentEditor-styleButton {
+  display: inline-block;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 16px;
+  padding: 2px 7px;
+  border: 1px solid transparent;
+  margin: 0 5px 0 0;
+  border-radius: 3px;
+  background: #343436;
+}
+
+.CodepenCommentEditor-submitButton {
+  color: white;
+  cursor: pointer;
+  float: left;
+  margin-top: 5px;
+  padding: 10px 16px;
+  background: none;
+  border: 3px solid #ccc;
+  border-radius: 3px;
+}
+.CodepenCommentEditor-submitButton:hover {
+  background: white;
+  border-color: white;
+  color: black;
+}
+
+.CodepenCommentEditor-activeButton {
+  background: #4d4d50;
+  transform: translateY(1px);
+}
