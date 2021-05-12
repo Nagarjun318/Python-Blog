@@ -1,0 +1,33 @@
+{% extends "blog/base.html" %}
+{% block content%}
+<h1>Post List</h1>
+{%for post in post_list %}
+<div class="list-group">
+  {% if forloop.first %}
+    <a href="{% url 'post_detail' pk=post.pk %}" class="list-group-item list-group-item-action flex-column align-items-start active">
+      <div class="d-flex w-100 justify-content-between">
+        <h2 class="mb-1">{{ post.title }}</h2>
+        <small>{{ post.published_date }}</small>
+      </div>
+      <p class="mb-1">{{post.text|truncatechars:50}}</p>
+      <div class="d-flex w-100 justify-content-between">
+        <small>{{post.author}}</small>
+        <small>{{post.approve_comments.count }} comments</small>
+      </div>
+    </a>
+  {% else %}
+    <a href="{% url 'post_detail' pk=post.pk %}" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h2 class="mb-1">{{ post.title }}</h2>
+        <small class="text-muted">{{ post.published_date }}</small>
+      </div>
+      <p class="mb-1">{{post.text|truncatechars:50}}</p>
+      <div class="d-flex w-100 justify-content-between">
+        <small>{{post.author}}</small>
+        <small>{{post.approve_comments.count }} comments </small>
+      </div>
+    </a>
+  {% endif %}
+</div>
+{% endfor %}
+{% endblock %}

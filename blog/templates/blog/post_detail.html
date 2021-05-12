@@ -1,0 +1,74 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block extra_head%}
+<link rel="stylesheet" href="{% static 'css/post_detail.css'%}">
+<link rel="stylesheet" href="{% static 'scripts/post_detail.js'%}">
+{% endblock %}
+{% block content%}
+
+<div class="comments-section">
+  <div class="comments">
+    <h1>{{post.title}}</h1>
+    <div id="comments-container">
+      <div class="comment">
+        <div class="comment-user">
+          <div class="avatar"></div><span class="user-details"><span class="username">{{post.author}} </span><span> </span>
+          {% if post.published_date %}
+          <span>on {{post.published_date}}</span></span>
+          {% endif %}
+
+        </div>
+        <div class="comment-text">
+           {{post.text}}<br><br>
+           {% if user.is_authenticated %}
+             <a class="btn btn-outline-warning" href="{% url 'post_edit' pk=post.pk %}">
+                   <span class="glyphicon glyphicon-pencil"></span>
+                 </a>
+             <a class="btn btn-outline-danger" href="{% url 'post_remove' pk=post.pk %}">
+                   <span class="glyphicon glyphicon-remove"></span>
+                 </a>
+             <a class="btn btn-outline-info" href="{% url 'add_comment_to_post' pk=post.pk %}">
+                   <span class="glyphicon glyphicon-comment"></span>
+                 </a>
+            {% if not post.published_date %}
+            <a class="btn btn-outline-success" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+            {% endif %}
+
+           {% endif %}
+        </div>
+      </div>
+      <h2>Comments</h2>
+      {% for comment in post.comments.all %}
+      {% if user.is_authenticated or comment.approved_comment %}
+      <div class="comment">
+        <div class="comment-user">
+          <div class="avatar"></div><span class="user-details"><span class="username">{{comment.author}} </span><span></span><span>on {{comment.created_date}}</span></span>
+        </div>
+        <div class="comment-text">
+          {{comment.text}}<br><br><br>
+          {% if not comment.approved_comment %}
+          <a class="btn btn-outline-success" href="{% url 'comment_approve' pk=comment.pk %}">
+              <span class="glyphicon glyphicon-ok"></span>
+            </a>
+          <a class="btn btn-outline-danger" href="{% url 'comment_remove' pk=comment.pk %}">
+              <span class="glyphicon glyphicon-remove"></span>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+      {% empty %}
+      <p>No comments!</p>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="comment-editor">
+    <h4>
+    <div id="comment-form"><a class="btn btn-outline-info" href="{% url 'add_comment_to_post' pk=post.pk %}">LEAVE A COMMENT
+          <span class="glyphicon glyphicon-comment"></span>
+        </a></div></h4>
+  </div>
+</div>
+</html>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+{% block content%}
+<h1>Draft List</h1>
+{%for post in draft_list %}
+<div class="list-group">
+  {% if forloop.first %}
+    <a href="{% url 'post_detail' pk=post.pk %}" class="list-group-item list-group-item-action flex-column align-items-start active">
+      <div class="d-flex w-100 justify-content-between">
+        <h2 class="mb-1">{{ post.title }}</h2>
+        <small>{{ post.created_date|date:"D M Y"}}</small>
+      </div>
+      <p class="mb-1">{{post.text|truncatechars:50}}</p>
+      <div class="d-flex w-100 justify-content-between">
+        <small>{{post.author}}</small>
+      </div>
+    </a>
+  {% else %}
+    <a href="{% url 'post_detail' pk=post.pk %}" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h2 class="mb-1">{{ post.title }}</h2>
+        <small class="text-muted">{{ post.created_date|date:"D M Y"}}</small>
+      </div>
+      <p class="mb-1">{{post.text|truncatechars:50}}</p>
+      <div class="d-flex w-100 justify-content-between">
+        <small>{{post.author}}</small>
+      </div>
+    </a>
+  {% endif %}
+</div>
+{% endfor %}
+{% endblock %}

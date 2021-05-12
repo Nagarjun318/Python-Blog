@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block extra_head%}
+<link rel="stylesheet" href="{% static 'css/post_form.css'%}">
+{% endblock %}
+
+{% block content%}
+<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+	<h1><a href="http://designvkp.com/create-responsive-forms-using-html-css/" rel="dofollow" target="_blank"></a></h1>
+
+      <form method="post">
+        <h1>Submit your Post</h1>
+
+        <fieldset>
+          {% csrf_token %}
+          {{form.as_p}}
+        </fieldset>
+
+        <button type="submit">Save</button>
+      </form>
+
+<script> var editor = new MediumEditor('.editable');</script>
+
+
+{% endblock %}
